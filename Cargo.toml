@@ -1,0 +1,25 @@
+[package]
+name = "logzy"
+description = "Command line tool for formatting Structured logs in a human-friendly format"
+version = "2.1.3"
+authors = ["John Batty <john.batty@metaswitch.com>"]
+license-file = "LICENSE"
+
+[dependencies]
+atty = "0.2"
+chrono = "0.4"
+serde = "1"
+serde_derive = "1"
+serde_json = "1"
+structopt = "0.3"
+termion = "4"
+
+[package.metadata.generate-rpm]
+license = "LICENSE"
+assets = [
+  { source = "target/qsbuild/logzy", dest = "/usr/bin/logzy", mode = "755" },
+  {source = "LICENSE",dest = "/usr/share/logzy/LICENSE",mode = "0644"},
+]
+
+[profile.release]
+overflow-checks = true
